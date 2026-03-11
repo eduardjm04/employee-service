@@ -1,35 +1,127 @@
-# Read Me First
-The following was discovered as part of building this project:
+# Employee Service API
 
-* The original package name 'com.example.employee-service' is invalid and this project uses 'com.example.employee_service' instead.
+REST API for managing employees built with **Spring Boot 2.7**, **Spring Data JPA**, and **H2 Database**.
 
-# Getting Started
+This project demonstrates a clean backend architecture with best practices such as layered design, validation, exception handling, logging, and API documentation.
 
-### Reference Documentation
-For further reference, please consider the following sections:
+---
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/4.0.3/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/4.0.3/maven-plugin/build-image.html)
-* [Spring Web](https://docs.spring.io/spring-boot/4.0.3/reference/web/servlet.html)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/4.0.3/reference/data/sql.html#data.sql.jpa-and-spring-data)
-* [Validation](https://docs.spring.io/spring-boot/4.0.3/reference/io/validation.html)
-* [Spring Boot Actuator](https://docs.spring.io/spring-boot/4.0.3/reference/actuator/index.html)
+## Technologies
 
-### Guides
-The following guides illustrate how to use some features concretely:
+* Java 17
+* Spring Boot 2.7
+* Spring Data JPA / Hibernate
+* H2 Database
+* OpenAPI / Swagger
+* Lombok
+* JUnit 5 / Mockito
+* Docker
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Validation](https://spring.io/guides/gs/validating-form-input/)
-* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
+---
 
-### Maven Parent overrides
+## Architecture
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+The project follows a layered architecture:
 
+controller → service → repository → database
+
+Additional layers:
+
+* DTOs
+* Mapper
+* Exception handling
+* Constants
+* Utils
+
+---
+
+## Running the application
+
+### Run locally
+
+```bash
+mvn spring-boot:run
+```
+
+Application will start on:
+
+```
+http://localhost:9090
+```
+
+---
+
+## API Documentation
+
+Swagger UI is available at:
+
+```
+http://localhost:9090/swagger-ui/index.html
+```
+
+---
+
+## Main Endpoints
+
+| Method | Endpoint          | Description                |
+| ------ | ----------------- | -------------------------- |
+| GET    | /employees        | List employees (paginated) |
+| GET    | /employees/{id}   | Get employee by ID         |
+| POST   | /employees        | Create employees           |
+| PUT    | /employees/{id}   | Update employee            |
+| DELETE | /employees/{id}   | Delete employee            |
+| GET    | /employees/search | Search employees by name   |
+
+---
+
+## Example Request
+
+POST /employees
+
+```json
+[
+  {
+    "firstName": "Juan",
+    "secondName": "Carlos",
+    "fatherLastName": "Perez",
+    "motherLastName": "Lopez",
+    "gender": "MALE",
+    "bornDate": "1995-10-20",
+    "position": "Developer"
+  }
+]
+```
+
+---
+
+## Logging
+
+Application logs are stored in:
+
+```
+logs/employee-service.log
+```
+
+Log configuration is managed via `application.properties`.
+
+---
+
+## Running with Docker
+
+Build the image:
+
+```bash
+docker build -t employee-service .
+```
+
+Run the container:
+
+```bash
+docker run -p 9090:9090 employee-service
+```
+
+Swagger will be available at:
+
+```
+http://localhost:9090/swagger-ui/index.html
+```
