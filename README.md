@@ -125,3 +125,23 @@ Swagger will be available at:
 ```
 http://localhost:9090/swagger-ui/index.html
 ```
+
+## API Evidence
+
+### Swagger UI
+
+![Swagger UI](screenshots/swagger.png)
+
+### Create Employees
+
+![Create Employees 1](screenshots/create_1.png)
+
+![Create Employees 1](screenshots/create_2.png)
+
+### Get Employees
+
+![Get Employees](screenshots/getAll.png)
+
+### Search Employees
+
+![Search Employees](screenshots/getByName.png)
