@@ -2,12 +2,13 @@ package com.example.employee_service.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
 import com.example.employee_service.entity.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
 import lombok.Builder;
 import lombok.Data;
 
