@@ -2,7 +2,7 @@
 
 REST API for managing employees built with **Spring Boot 2.7**, **Spring Data JPA**, and **H2 Database**.
 
-This project demonstrates a clean backend architecture with best practices such as layered design, validation, exception handling, logging, and API documentation.
+This project demonstrates a layered back end architecture with best practices such as SOLID principles, validation, exception handling, logging, and API documentation.
 
 ---
 
